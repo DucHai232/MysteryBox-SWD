@@ -1,0 +1,18 @@
+:root {
+    --primary-big: 24px;
+    --primary-large: 18px;
+    --primary-small: 14px;
+    --primary-color: rgb(3, 180, 3); 
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(1, 1, 1, 0.6);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(4, 226, 4);
+}

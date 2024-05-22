@@ -1,0 +1,38 @@
+[
+    {
+        "title": "CHÍNH SÁCH",
+        "list": [
+            "Chính sách bảo mật",
+            "Chính sách vận chuyển",
+            "Chính sách đổi trả",
+            "Quy định sử dụng"
+        ]
+    },
+    {
+        "title": "HƯỚNG DẪN",
+        "list": [
+            "Hướng dẫn mua hàng",
+            "Hướng dẫn thanh toán",
+            "Hướng dẫn giao nhận",
+            "Điều khoản dịch vụ"
+        ]
+    },
+    {
+        "title": "DANH MỤC NỔI BẬT",
+        "list": [
+            "All Products",
+            "Box A",
+            "Box B",
+            "Box C"
+        ]
+    },
+    {
+        "title": "LIÊN HỆ",
+        "list": [
+            "Thời gian mở cửa [ 9:30 - 21:30 ]",
+            "GÓP Ý & KHIẾU NẠI (12:00 - 20:30)",
+            "Tất cả các ngày trong tuần (Trừ tết Âm Lịch)"
+   
+        ]
+    }
+]
