@@ -2,7 +2,19 @@
     --primary-big: 24px;
     --primary-large: 18px;
     --primary-small: 14px;
-    --primary-color: rgb(3, 180, 3); 
+    --primary-color: #0EB9EF; 
+    --padding-card: 20px;
+    --padding-input: 10px;
+    --border-card: 15px;
+    --border-input: 8px;
+    --margin-y: 50px;
+    --margin-input: 20px;
+    --color-register: #C9DCF9;
+    --color-login: #F9C9E2;
+    --color-btn-register: #95BDFF;
+    --color-btn-login: #FB6F92;
+    --padding-container: 100px;
+    --line-height: 2rem
 }
 
 ::-webkit-scrollbar{
@@ -14,5 +26,5 @@
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: rgb(4, 226, 4);
+    background-color: #0EB9EF;
 }

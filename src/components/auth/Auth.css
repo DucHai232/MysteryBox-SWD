@@ -1,0 +1,127 @@
+.register-container{
+    height: 100vh;
+    position: relative;
+}
+
+.register-container .image {
+    width: 80%;
+    height: 500px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-card);
+}
+
+.register-container  .form-register{
+    position: absolute;
+    width: 600px;
+    min-height: 630px;
+    top: 78%;
+    left: 80%;
+    transform: translate(-60%, -80%);
+    padding: var(--padding-card);
+    border-radius: var(--border-card);
+}
+
+.register-container  .form-register .title {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.form-input{
+    font-size: var(--primary-large);
+    padding: var(--padding-input)  var(--padding-card);
+}
+
+.form-input .label-title{
+    color: white;
+    font-weight: bold;
+    display: block;
+}
+
+.form-input .input{
+    width: 100%;
+    height: 30px;
+    padding: var(--padding-input);
+    border-radius: var(--border-input);
+    outline: none;
+    border: 1px solid lightgray;
+    margin-bottom: var(--margin-input);
+}
+
+.form-input .btn {
+    /* background-color: var(--color-btn); */
+    width: 300px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    border: 1px solid var(--color-btn);
+    color: white;
+    font-size: var(--primary-large);
+    border-radius: var(--border-input);
+}
+
+.form-input .text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    font-size: var(--primary-small);
+    display: flex;
+}
+
+.form-input .message-error {
+    color: red;
+    font-size: var(--primary-small);
+    margin-top: -15px;
+    /* margin-bottom: var(--margin-input); */
+}
+
+.form-input .text .des{
+    margin-right: 10px;
+}
+
+
+.form-input .text .login{
+    color: blue;
+    cursor: pointer;
+}
+
+.form-input .login-other{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 120%);
+}
+
+.form-input .login-other button {
+    color: var(--color-btn-login);
+    font-weight: bold;
+    display: block;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-btn);
+    border-radius: var(--border-input);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1920px) and (max-width: 1920px) {
+    .register-container  .form-register{
+        position: absolute;
+        width: 600px;
+        min-height: 700px;
+        background-color: var(--color-register);
+        top: 70%;
+        left: 80%;
+        transform: translate(-60%, -80%);
+        padding: var(--padding-card);
+        border-radius: var(--border-card);
+    }
+}

@@ -1,33 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import SearchIcon from "@mui/icons-material/Search";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar } from "antd";
+import { logout } from "../../redux/actions/auth.action";
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.authReducer.auth.user);
+  const [info, setInfo] = useState(false);
+  const handleLogout = () => {
+    dispatch(logout());
+    setInfo(false);
+  };
   return (
     <div className="header-container">
-      <div className="header-nav">
-        <p className="title">Mystery Box</p>
-        <ul>
-          <li>Đề xuất</li>
-          <li>MY STAND-IN</li>
-          <li>Khác</li>
-        </ul>
+      <div className="title" onClick={() => navigate("/")}>
+        MysisterGift
       </div>
-      <div className="header-search">
-        <div className="input-search">
-          <input type="text" className="input" />
-          <SearchIcon className="icon-search" />
-        </div>
-        <ul>
-          <li>
-            <AccessTimeIcon className="icon" />
-            <p className="text">Lịch sử xem</p>
-          </li>
-          <li>
-            <PersonIcon className="icon" />
-            <p className="text">Của tôi</p>
-          </li>
+      <div className="header-nav">
+        <ul className="list-nav">
+          <li>About Us</li>
+          <li>Home</li>
+          <li>Support</li>
+          {!user ? (
+            <li className="btn" onClick={() => navigate("/register")}>
+              Login/Register
+            </li>
+          ) : (
+            <div>
+              {" "}
+              <Avatar
+                src={
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK_4MUpPLVjqA2xWyq3u0YosxO4LpcPigtuqQmYt26pQ&s"
+                }
+                onClick={() => setInfo((prev) => !prev)}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          )}
+
+          {info && (
+            <div className="info">
+              <ul>
+                <li>Thông tin cá nhân</li>
+                <li>Tài khoản của con</li>
+                <li onClick={handleLogout}>Đăng xuất</li>
+              </ul>
+            </div>
+          )}
         </ul>
       </div>
     </div>
