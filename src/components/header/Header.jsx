@@ -2,21 +2,32 @@ import React, { useState } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar } from "antd";
+import { Avatar, Switch, message } from "antd";
 import { logout } from "../../redux/actions/auth.action";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authReducer.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const [info, setInfo] = useState(false);
   const handleLogout = () => {
     dispatch(logout());
+    message.success("Đã đăng xuất");
     setInfo(false);
   };
+  const onChange = (checked) => {
+    dispatch({ type: "LIGHT_DARK", payload: checked });
+  };
+  const themeLightDark = useSelector((state) => state.lightdarkReducer);
   return (
-    <div className="header-container">
+    <div
+      className="header-container"
+      // style={
+      //   themeLightDark.isLightTheme ? themeLightDark.light : themeLightDark.dark
+      // }
+    >
       <div className="title" onClick={() => navigate("/")}>
         MysisterGift
+        {/* <Switch defaultChecked onChange={onChange} /> */}
       </div>
       <div className="header-nav">
         <ul className="list-nav">
@@ -44,7 +55,12 @@ const Header = () => {
             <div className="info">
               <ul>
                 <li>Thông tin cá nhân</li>
-                <li>Tài khoản của con</li>
+                <li onClick={() => navigate("/info-profile-kid")}>
+                  Tài khoản của con
+                </li>
+                <li onClick={() => navigate("/cart-order-package")}>
+                  Giỏ hàng
+                </li>
                 <li onClick={handleLogout}>Đăng xuất</li>
               </ul>
             </div>

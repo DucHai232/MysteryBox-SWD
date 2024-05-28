@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/auth.action";
 import store from "../../store/ReduxStore";
+import { message } from "antd";
 const Auth = ({ comp, title, route, bgColor, bgCard, bgBtn }) => {
   const navigate = useNavigate();
   const styleContainer = () => {
@@ -53,12 +54,11 @@ const Auth = ({ comp, title, route, bgColor, bgCard, bgBtn }) => {
       try {
         await dispatch(login(values));
         const error = store.getState().authReducer.error;
-        console.log(error);
         if (error) {
-          return alert(error);
+          return message.error(error);
         }
         formik.handleReset();
-        alert("Đăng nhập thành công");
+        message.success("Đăng nhập thành công");
         navigate("/");
       } catch (error) {
         console.log(error.message);

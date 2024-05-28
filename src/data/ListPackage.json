@@ -1,0 +1,74 @@
+[
+    {
+        "name": "1 BOX QUÀ",
+        "standard": true,
+        "essential": false,
+        "elite": false,
+        "prestige": false,
+        "ultimate": false
+    },
+    {
+        "name": "2 BOX QUÀ",
+        "standard": false,
+        "essential": true,
+        "elite": false,
+        "prestige": false,
+        "ultimate": false
+    },
+    {
+        "name": "3 BOX QUÀ",
+        "standard": false,
+        "essential": false,
+        "elite": true,
+        "prestige": false,
+        "ultimate": false
+    },
+    {
+        "name": "4 BOX QUÀ",
+        "standard": false,
+        "essential": false,
+        "elite": false,
+        "prestige": true,
+        "ultimate": false
+    },
+    {
+        "name": "5 BOX QUÀ",
+        "standard": false,
+        "essential": false,
+        "elite": false,
+        "prestige": false,
+        "ultimate": true
+    },
+    {
+        "name": "1 THƯ CẢM ƠN",
+        "standard": true,
+        "essential": true,
+        "elite": true,
+        "prestige": true,
+        "ultimate": true
+    },
+    {
+        "name": "1 QR ĐIỂM THƯỞNG",
+        "standard": true,
+        "essential": true,
+        "elite": true,
+        "prestige": true,
+        "ultimate": true
+    },
+    {
+        "name": "1 VOUCHER CHO LẦN MUA TIẾP THEO",
+        "standard": true,
+        "essential": true,
+        "elite": true,
+        "prestige": true,
+        "ultimate": true
+    },
+    {
+        "name": "1 VOUCHER ÁP DỤNG CẢ ĐỜI",
+        "standard": false,
+        "essential": false,
+        "elite": false,
+        "prestige": true,
+        "ultimate": true
+    }
+]

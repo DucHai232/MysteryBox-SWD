@@ -88,3 +88,73 @@
 .listbox-container .card .content .price{
     font-weight: bold;
 }
+
+/* package */
+.package{
+    box-shadow: 2px 2px 2px 2px var(--color-login);
+    background-color: rgb(250, 250, 250);
+    height: 500px;
+    width: 400px;
+    border-radius: var(--margin-input);
+    margin-bottom: 25px;
+    margin-left: 25px;
+    position: relative;
+}
+
+.package .type {
+    width: 95%;
+    text-align: center;
+    padding: var(--padding-input);
+    border-radius: var(--border-card);
+}
+
+.package .type .title{
+    font-size: var(--primary-big);
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: bold;
+}
+
+.package .type .price {
+    margin-top: var(--margin-y);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.description ul{
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.description .name {
+    font-weight: bold;
+    color: var(--color-btn-login);
+    font-size: var(--primary-large);
+    display: flex;
+    justify-content: center ;
+    margin: var(--margin-input);
+}
+
+.icon{
+    color: green;
+}
+
+.description ul li {
+    padding: 2px;
+    margin: var(--margin-input) 0;
+    margin-right: 35px;
+    color: var(--color-btn-login)
+}
+
+.button{
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 80%;
+    height: 60px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(var(--color-btn-login),var(--color-btn-register));
+    border: none;
+    border-radius: var(--border-input);
+}
