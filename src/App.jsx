@@ -11,6 +11,8 @@ import PaymentOrder from "./pages/payment-order/PaymentOrder";
 import Footer from "./components/footer/Footer";
 import InfoProfileKid from "./pages/info-profile-kid/InfoProfileKid";
 import CartOrderPackage from "./pages/cart-order-package/CartOrderPackage";
+import MessageSuccessOrder from "./pages/page-success-order/MessageSuccessOrder";
+import BoxOrderDetail from "./pages/box-order-detail/BoxOrderDetail";
 function App() {
   const user = useSelector((state) => state.authReducer.auth);
   const themeLightDark = useSelector((state) => state.lightdarkReducer);
@@ -30,6 +32,11 @@ function App() {
         <Route path="/payment-order/:id" element={<PaymentOrder />} />
         <Route path="/info-profile-kid" element={<InfoProfileKid />} />
         <Route path="/cart-order-package" element={<CartOrderPackage />} />
+        <Route
+          path="/success-order-payment/:id"
+          element={<MessageSuccessOrder />}
+        />
+        <Route path="/box-order-detail/:id" element={<BoxOrderDetail />} />
       </Routes>
       <Footer />
     </div>

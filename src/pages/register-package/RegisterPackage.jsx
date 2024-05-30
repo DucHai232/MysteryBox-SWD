@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import "./RegisterPackage.css";
 import { Button, message, Steps, theme } from "antd";
@@ -7,9 +7,13 @@ import Theme from "../../components/register-package/Theme";
 import Confirm from "../../components/register-package/Confirm";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { orderPackage } from "../../redux/actions/packageOrder.action";
+import { getPackageOrderByUserId } from "../../redux/actions/packageOrder.action";
 import store from "../../store/ReduxStore";
 import ChooseBox from "../../components/register-package/ChooseBox";
+import { getCurrentPeriod } from "../../apis/period.request";
+import { getBox } from "../../redux/actions/box.action";
+import { createPackageInPeriod } from "../../apis/packageInPeriod.request";
+import { orderPackage } from "../../apis/packageOrder.request";
 const steps = [
   {
     title: "Chọn theme",
@@ -20,12 +24,12 @@ const steps = [
     comp: "register",
   },
   {
-    title: "Chọn box quà",
-    comp: "box",
-  },
-  {
     title: "Xác nhận thông tin",
     comp: "confirm",
+  },
+  {
+    title: "Chọn box quà",
+    comp: "box",
   },
 ];
 
@@ -36,6 +40,8 @@ const RegisterPackage = () => {
   const [themeId, setThemeId] = useState("");
   const [kidId, setKidId] = useState("");
   const [boxId, setBoxId] = useState("");
+  const [packageOrderId, setPackageOrderId] = useState("");
+  const [currentPeriod, setCurrentPeriod] = useState();
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
@@ -66,7 +72,8 @@ const RegisterPackage = () => {
   const packageChooseByUser = dataPackages?.packages?.filter(
     (item) => item.id === id
   )[0];
-  const handleOrder = () => {
+  const handleOrder = async () => {
+    setCurrent(current + 1);
     const confirmUserOrder = {
       kidId: kidId,
       totalPrice: packageChooseByUser?.price,
@@ -76,13 +83,35 @@ const RegisterPackage = () => {
       email: user?.user?.email,
       additionalNotes: "This is a sample additional note.",
     };
-    dispatch(orderPackage(id, confirmUserOrder));
+    const response = await orderPackage(id, confirmUserOrder);
+    setPackageOrderId(response.data.order.id);
     const error = store.getState().packageOrderReducer.error;
     if (error) {
       return message.error(error);
     }
     message.success("Thành công");
-    navigate(`/payment-order/${id}`);
+    // navigate(`/payment-order/${id}`);
+  };
+  useEffect(() => {
+    dispatch(getBox());
+    const fetchData = async () => {
+      const response = await getCurrentPeriod();
+      setCurrentPeriod(response?.data.periodCurrent);
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async () => {
+    setBoxId(id);
+    const newPackageInPeriod = {
+      periodId: currentPeriod?.id,
+      boxId: boxId,
+      packageOrderId: packageOrderId,
+    };
+    const response = await createPackageInPeriod(newPackageInPeriod);
+    navigate(`/success-order-payment/${id}`, {
+      state: { data: response?.data },
+    });
   };
   return (
     <>
@@ -91,9 +120,15 @@ const RegisterPackage = () => {
         <Steps current={current} items={items} />
         <div style={contentStyle}>
           {current === 0 && <Theme setThemeId={setThemeId} />}
-          {current === 1 && <ChooseKidInfo setKidId={setKidId} kidId={kidId} />}
-          {current === 2 && <ChooseBox setBoxId={setBoxId} />}
-          {current === 3 && (
+          {current === 1 && (
+            <ChooseKidInfo
+              setKidId={setKidId}
+              kidId={kidId}
+              themeId={themeId}
+            />
+          )}
+
+          {current === 2 && (
             <Confirm
               kidId={kidId}
               user={user?.user}
@@ -101,6 +136,7 @@ const RegisterPackage = () => {
               packageChooseByUser={packageChooseByUser}
             />
           )}
+          {current === 3 && <ChooseBox setBoxId={setBoxId} />}
         </div>
         <div
           style={{
@@ -117,14 +153,14 @@ const RegisterPackage = () => {
               Tiếp theo
             </Button>
           )}
-          {current === 2 && boxId && (
-            <Button type="primary" onClick={() => handleNextKidId()}>
-              Tiếp theo
-            </Button>
-          )}
-          {current === steps.length - 1 && (
+          {current === 2 && (
             <Button type="primary" onClick={handleOrder}>
               Xác nhận
+            </Button>
+          )}
+          {current === steps.length - 1 && boxId && (
+            <Button type="primary" onClick={() => handleSubmit()}>
+              Mua đơn hàng
             </Button>
           )}
           {current > 0 && (

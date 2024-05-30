@@ -8,3 +8,10 @@ export const createPackageInPeriod = (data) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getPackageInPeriodByPackageOrderId = (packageOrderId) => {
+  const token = getToken();
+  return API.get(`/get-packageinperiod-by-packageOrder/${packageOrderId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};

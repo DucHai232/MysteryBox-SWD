@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import Header from "../../components/header/Header";
-import { Table, Tag } from "antd";
+import { Space, Table, Tag } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getPackageOrderByUserId } from "../../redux/actions/packageOrder.action";
+import { useNavigate } from "react-router-dom";
 
 const CartOrderPackage = () => {
+  const navigate = useNavigate();
   const columns = [
     {
       title: "Tên của bạn",
       dataIndex: "nameOfAdult",
       key: "nameOfAdult",
-      render: (text) => <a>{text}</a>,
     },
     {
       title: "Tên của con",
@@ -28,36 +29,45 @@ const CartOrderPackage = () => {
       dataIndex: "totalPrice",
     },
     {
+      title: "Trạng thái",
+      key: "status",
+      dataIndex: "status",
+      render: (_, { status }) => (
+        <>
+          {
+            <Tag
+              color={
+                status === "Pending"
+                  ? "orange"
+                  : status === "Finished"
+                  ? "green"
+                  : "red"
+              }
+            >
+              {status}
+            </Tag>
+          }
+        </>
+      ),
+    },
+    {
       title: "Đơn hàng vận chuyển",
-      key: "transport",
-      dataIndex: "transport",
-      render: (_, { record }) => <>{<Tag color="blue">Xem chi tiết</Tag>}</>,
-    },
-  ];
-  const data = [
-    {
-      key: "1",
-      firstName: "John",
-      lastName: "Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      firstName: "Jim",
-      lastName: "Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      firstName: "Joe",
-      lastName: "Black",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
+      key: "id",
+      render: (_, { id }) => (
+        <>
+          {
+            <Space size="middle">
+              <a
+                onClick={() => {
+                  navigate(`/box-order-detail/${id}`);
+                }}
+              >
+                Xem chi tiết
+              </a>
+            </Space>
+          }
+        </>
+      ),
     },
   ];
   const dispatch = useDispatch();

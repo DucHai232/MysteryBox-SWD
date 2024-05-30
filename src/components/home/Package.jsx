@@ -8,7 +8,7 @@ const Package = ({ data }) => {
     <div>
       <Row>
         {data?.packages?.map((item) => (
-          <Col span={8}>
+          <Col span={8} key={item.id}>
             <div className="package">
               <div className="type">
                 <p className="title">Standard</p>

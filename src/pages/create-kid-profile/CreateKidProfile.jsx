@@ -3,8 +3,9 @@ import { DatePicker, Input, Modal, Select, Space } from "antd";
 import { formatDate } from "../../utils/formatDate";
 import axios from "axios";
 import { createInfoProfileKid } from "../../apis/kid.request";
-const CreateKidProfile = ({ modalOpen, setModalOpen }) => {
+const CreateKidProfile = ({ modalOpen, setModalOpen, themeId }) => {
   const [data, setData] = useState({
+    themeId: themeId,
     fullName: "",
     descriptionHobby: "",
     yob: "",

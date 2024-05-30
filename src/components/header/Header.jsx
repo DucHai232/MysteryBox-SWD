@@ -35,7 +35,7 @@ const Header = () => {
           <li>Home</li>
           <li>Support</li>
           {!user ? (
-            <li className="btn" onClick={() => navigate("/register")}>
+            <li className="btn" onClick={() => navigate("/login")}>
               Login/Register
             </li>
           ) : (

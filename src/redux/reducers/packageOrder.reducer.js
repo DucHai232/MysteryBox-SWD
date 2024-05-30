@@ -1,5 +1,5 @@
 const packageOrderReducer = (
-  state = { packageOrders: [], loading: false, error: "" },
+  state = { packageOrders: [], order: null, loading: false, error: "" },
   action
 ) => {
   const { type, payload } = action;
@@ -7,10 +7,21 @@ const packageOrderReducer = (
     case "PACKAGE_ORDER_START":
       return { ...state, loading: true };
     case "PACKAGE_ORDER_SUCCESS":
-      const newOrder = [...state.packageOrders, payload];
-      return { ...state, packageOrders: newOrder, loading: false, error: "" };
+      const newPackageOrders = [...state.packageOrders, payload];
+      return {
+        ...state,
+        packageOrders: newPackageOrders,
+        order: payload,
+        loading: false,
+        error: "",
+      };
+
     case "GET_PACKAGE_ORDER_SUCCESS":
-      return { ...state, packageOrders: payload, loading: false };
+      return {
+        ...state,
+        packageOrders: payload,
+        loading: false,
+      };
     case "PACKAGE_ORDER_FAIL":
       return { ...state, loading: false, error: payload };
 

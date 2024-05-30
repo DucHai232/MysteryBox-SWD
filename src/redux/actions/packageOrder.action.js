@@ -8,7 +8,7 @@ export const orderPackage = (packageId, orderData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "PACKAGE_ORDER_FAIL",
-      payload: error.response.data.message,
+      payload: "",
     });
   }
 };

@@ -5,7 +5,7 @@ import { getKidProfile } from "../../redux/actions/kid.action";
 import { useNavigate } from "react-router-dom";
 import { Input, Radio, Space } from "antd";
 import CreateKidProfile from "../../pages/create-kid-profile/CreateKidProfile";
-const ChooseKidInfo = ({ setKidId, kidId }) => {
+const ChooseKidInfo = ({ setKidId, kidId, themeId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,8 +19,7 @@ const ChooseKidInfo = ({ setKidId, kidId }) => {
   };
   return (
     <div>
-      {Array.isArray(kids?.dataKids?.kidProfilesByUserId) &&
-      kids?.dataKids?.kidProfilesByUserId.length === 0 ? (
+      {kids?.dataKids?.length === 0 ? (
         <div className="alert-no-kid">
           {" "}
           <Alert
@@ -31,7 +30,11 @@ const ChooseKidInfo = ({ setKidId, kidId }) => {
           <button className="btn" onClick={() => setModalOpen(true)}>
             Tạo thông tin ngay!
           </button>
-          <CreateKidProfile modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          <CreateKidProfile
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            themeId={themeId}
+          />
         </div>
       ) : (
         <div>
