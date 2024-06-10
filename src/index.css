@@ -2,7 +2,8 @@
     --primary-big: 24px;
     --primary-large: 18px;
     --primary-small: 14px;
-    --primary-color: #0EB9EF; 
+    --primary-color: #150E4B; 
+    --secondary-color: #cf2e2e;
     --padding-card: 20px;
     --padding-input: 10px;
     --border-card: 15px;
@@ -22,9 +23,9 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #F9C9E2;
+    background-color: lightgray;
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #0EB9EF;
+    background-color: #cf2e2e;
 }

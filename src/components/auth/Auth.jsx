@@ -66,6 +66,10 @@ const Auth = ({ comp, title, route, bgColor, bgCard, bgBtn }) => {
     },
   });
 
+  const handleLogin = () => {
+    window.open("http://localhost:8080/api/auth/google", "_self");
+  };
+
   return (
     <div className="register-container" style={styleContainer()}>
       <img
@@ -144,13 +148,6 @@ const Auth = ({ comp, title, route, bgColor, bgCard, bgBtn }) => {
             {comp === "login" ? "Sign In" : "Sign Up"}
           </button>
 
-          {comp === "login" && (
-            <div className="login-other">
-              <button>Continue with Google</button>
-              <button>Continue with Facebook</button>
-            </div>
-          )}
-
           <div className="text">
             <p className="des">
               {comp === "login"
@@ -162,6 +159,12 @@ const Auth = ({ comp, title, route, bgColor, bgCard, bgBtn }) => {
             </p>
           </div>
         </form>
+        {comp === "login" && (
+          <div className="login-other">
+            <button onClick={handleLogin}>Continue with Google</button>
+            <button>Continue with Facebook</button>
+          </div>
+        )}
       </div>
     </div>
   );

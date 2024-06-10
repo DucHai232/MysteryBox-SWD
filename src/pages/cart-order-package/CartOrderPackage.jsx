@@ -44,7 +44,11 @@ const CartOrderPackage = () => {
                   : "red"
               }
             >
-              {status}
+              {status === "Pending"
+                ? "Đang diễn ra"
+                : status === "Finished"
+                ? "Hoàn thành"
+                : "Hủy"}
             </Tag>
           }
         </>

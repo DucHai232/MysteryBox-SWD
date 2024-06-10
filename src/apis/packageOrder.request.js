@@ -10,7 +10,14 @@ export const orderPackage = (packageId, orderData) => {
 
 export const getPackageOrderByUserId = () => {
   const token = getToken();
-  return API.get("/get-packageorder", {
+  return API.get("/get-packageorderbyuserid", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const getPackageOrderByIdPk = (packageOrderId) => {
+  const token = getToken();
+  return API.get(`/get-packageorderbyidpk/${packageOrderId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };

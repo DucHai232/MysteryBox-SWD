@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Switch, message } from "antd";
 import { logout } from "../../redux/actions/auth.action";
+import { logoutAuth } from "../../redux/actions/oauth.action";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -11,13 +12,12 @@ const Header = () => {
   const [info, setInfo] = useState(false);
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(logoutAuth());
     message.success("Đã đăng xuất");
     setInfo(false);
   };
-  const onChange = (checked) => {
-    dispatch({ type: "LIGHT_DARK", payload: checked });
-  };
-  const themeLightDark = useSelector((state) => state.lightdarkReducer);
+  const loginGoogle = useSelector((state) => state.oauthReducer);
+  console.log(loginGoogle);
   return (
     <div
       className="header-container"
@@ -34,7 +34,7 @@ const Header = () => {
           <li>About Us</li>
           <li>Home</li>
           <li>Support</li>
-          {!user ? (
+          {!loginGoogle.isLoggedIn && !user ? (
             <li className="btn" onClick={() => navigate("/login")}>
               Login/Register
             </li>

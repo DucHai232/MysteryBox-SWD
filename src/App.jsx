@@ -14,16 +14,11 @@ import CartOrderPackage from "./pages/cart-order-package/CartOrderPackage";
 import MessageSuccessOrder from "./pages/page-success-order/MessageSuccessOrder";
 import BoxOrderDetail from "./pages/box-order-detail/BoxOrderDetail";
 function App() {
-  const user = useSelector((state) => state.authReducer.auth);
-  const themeLightDark = useSelector((state) => state.lightdarkReducer);
   return (
-    <div
-    // style={
-    //   themeLightDark.isLightTheme ? themeLightDark.light : themeLightDark.dark
-    // }
-    >
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:userId" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/package/:id" element={<PackageDetail />} />
@@ -38,7 +33,7 @@ function App() {
         />
         <Route path="/box-order-detail/:id" element={<BoxOrderDetail />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

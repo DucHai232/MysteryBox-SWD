@@ -1,13 +1,13 @@
-.home-container{
+/* .home-container{
     margin: var(--margin-y) 0;
     padding: 0 var(--padding-container);
-}
+} */
 
 .home-container .banner{
-    border-radius: var(--padding-input);
-    height: 600px;
+    width: 100%;
+    min-height: 1000px;
     object-fit: cover;
-    background-image: url("https://img.freepik.com/premium-photo/photocomposition-horizontal-shopping-banner-with-woman-big-smartphone_23-2151201773.jpg");
+    background-image: url("https://live.templately.com/wp-content/uploads/2020/08/e77185cf-bg-image.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -15,79 +15,196 @@
 
 .banner {
     margin: var(--margin-y) 0;
+    position: relative;
+    color: var(--primary-color);
 }
 
-.banner::before {
-    content: "";
-    background-color: rgba(36, 35, 35, 0.5);
+
+.card-banner{
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: var(--padding-input);
-    z-index: 1;
+    left: 10%;
+    bottom: 30%;
+    width: 600px;
+    border-radius: var(--border-card);
+    padding: var(--padding-card);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
-.banner .title{
-    font-size: 50px;
-    position: absolute;
-    z-index: 2;
+.card-banner .text{
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.card-banner .title{
+    font-size: 36px;
+}
+
+.card-banner .des{
+    color: lightgrey;
+}
+
+.card-banner .btn{
+    font-family: "Poppins", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5em;
+    /* fill: #f56a6a; */
     color: white;
-    top: 30%;
-    left: 40%;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0px 20px 50px 0px rgba(250, 41, 71, 0.3);
+    padding: 24px 20px 24px 20px;
 }
 
-.banner .des {
+.menu{
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    background-color: white;
+    border-radius: var(--border-card);
+    padding: 40px;
+    box-shadow: 0px 30px 70px 0px rgba(21, 14, 75, 0.1);
+}
+
+.menu .left {
+    display: flex;
+    align-items: center;
+}
+
+.menu .left .icon{
+    font-size: var(--primary-big);
+    margin-right: var(--margin-input);
+}
+
+.menu .left .text{
+    font-size: var(--primary-big);
+}
+
+.menu .right .btn{
+    width: 300px;
+    height: 60px;
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
     font-size: var(--primary-large);
-    position: absolute;
-    z-index: 2;
-    color: white;
-    top: 48%;
-    left: 43%;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0px 20px 50px 0px rgba(250, 41, 71, 0.3);
+    cursor: pointer;
 }
 
-.banner .btn{
-    background-color: var(--primary-color);
+/* otherbox-container */
+.otherbox-container{
+    padding: var(--padding-container);
+}
+
+.box::before{
+   content: "";
+   position: absolute;
+   z-index: 100;
+   width: 95%;
+   height: 300px;
+   background-color: rgba(21, 14, 75, 0.1);
+   border-radius: var(--border-input);
+   cursor: pointer;
+}
+.box .title{
     position: absolute;
-    z-index: 2;
+    z-index: 200;
     color: white;
-    top: 60%;
-    left: 48%;
-    border: 1px solid var(--primary-color);
-    padding: var(--padding-input);
-    border-radius: var(--border-input);
-    cursor: pointer;
+    font-size: var(--primary-big);
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* listbox-container */
 
-.listbox-container .card {
-    cursor: pointer;
-    margin-bottom: 30px;
-    margin-left: 30px;
+.listbox-container {
+    padding: var(--padding-container);
 }
 
-.listbox-container .card .image {
+.card {
+    text-align: center;
     width: 90%;
+    border-radius: var(--border-input);
+    background-color: white;
+    box-shadow: 0px 30px 70px 0px rgba(21, 14, 75, 0.1);
+}
+
+.card .image{
+    width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: var(--border-input);
 
 }
 
-.listbox-container .card .content .title{
+.card .content {
+    padding: var(--padding-input);
+}
+
+.card .content  .title {
+    font-weight: 500;
+}
+
+.card .content .price {
+    font-weight: bold;
     font-size: var(--primary-large);
 }
 
-.listbox-container .card .content .des{
-    font-size: var(--primary-small);
-    color: #a8a8a8;
+.card .btn {
+    width: 150px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: var(--padding-input);
+    margin-bottom: var(--margin-input);
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.listbox-container .card .content .price{
-    font-weight: bold;
+.card .btn:hover{
+    border: none;
+    background-color: var(--secondary-color);
+    color: white
 }
+
+/* infomation-container */
+.infomation-container{
+    padding: var(--padding-container);
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.infomation-container .title .des{
+    color: lightgray;
+}
+
+.infomation-container .card{
+    text-align: left;
+    width: 85%;
+    height: 300px;
+    background-color: white;
+    box-shadow: 0px 30px 70px 0px rgba(21, 14, 75, 0.1);
+    padding: var(--padding-card);
+    margin-top: var(--margin-input);
+}
+
+.infomation-container .card .icon{
+    font-size: 50px;
+}
+
+.infomation-container .card .title{
+    font-size: var(--primary-big);
+}
+
 
 /* package */
 .package{
@@ -134,9 +251,6 @@
     margin: var(--margin-input);
 }
 
-.icon{
-    color: green;
-}
 
 .description ul li {
     padding: 2px;

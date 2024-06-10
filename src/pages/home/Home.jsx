@@ -6,20 +6,30 @@ import Header from "../../components/header/Header";
 import Package from "../../components/home/Package";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataPackage } from "../../redux/actions/package.action";
+import OtherBox from "../../components/home/OtherBox";
+import Infomation from "../../components/home/Infomation";
+import { useParams } from "react-router-dom";
+import { loginOAuthGoogle } from "../../redux/actions/oauth.action";
 
 const Home = () => {
+  const { userId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDataPackage());
   }, []);
+  useEffect(() => {
+    dispatch(loginOAuthGoogle(userId));
+  }, []);
   const data = useSelector((state) => state.packageReducer.packages);
-  const themeLightDark = useSelector((state) => state.lightdarkReducer);
   return (
     <>
       <Header />
       <div className="home-container">
         <Background />
-        <Package data={data} />
+        <OtherBox />
+        <ListBox data={data} />
+        <Infomation />
+        {/* <Package data={data} /> */}
       </div>
     </>
   );

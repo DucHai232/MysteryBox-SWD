@@ -28,22 +28,6 @@ const PackageDetail = () => {
     <>
       <Header />
       <div className="package-detail-container">
-        <h1 className="title">{data?.name}</h1>
-        <div className="description">
-          <ul className="list-info">
-            <li>
-              Thời gian nhận quà
-              <ul>
-                <li>Mỗi tháng nhận 1 phần quà</li>
-                <li>Nếu đăng ký từ ngày 1-15 thì sẽ nhận cuối tháng</li>
-                <li>Nếu đăng ký từ ngày 15 - 30 thì sẽ nhận đầu tháng</li>
-              </ul>
-            </li>
-            <li>Tổng chi phí: {data?.price}</li>
-            <li>Chi phí mỗi box: {data?.price}</li>
-          </ul>
-          <img src={data?.image} className="image" />
-        </div>
         <table>
           <tr>
             <td></td>

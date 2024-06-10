@@ -6,6 +6,7 @@ import themeReducer from "./theme.reducer";
 import packageOrderReducer from "./packageOrder.reducer";
 import lightdarkReducer from "./lightdark.reducer";
 import boxReducer from "./box.reducer";
+import oauthReducer from "./oauth.reducer";
 
 export const reducers = combineReducers({
   authReducer,
@@ -15,4 +16,5 @@ export const reducers = combineReducers({
   packageOrderReducer,
   lightdarkReducer,
   boxReducer,
+  oauthReducer,
 });

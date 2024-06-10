@@ -15,3 +15,10 @@ export const getPackageInPeriodByPackageOrderId = (packageOrderId) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getAllPackageInPeriods = () => {
+  const token = getToken();
+  return API.get("/get-all-packageinperiod", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};

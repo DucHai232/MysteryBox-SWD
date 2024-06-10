@@ -94,13 +94,13 @@
     cursor: pointer;
 }
 
-.form-input .login-other{
+.login-other{
     position: absolute;
     left: 50%;
     transform: translate(-50%, 120%);
 }
 
-.form-input .login-other button {
+.login-other button {
     color: var(--color-btn-login);
     font-weight: bold;
     display: block;
